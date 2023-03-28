@@ -1,21 +1,15 @@
 // import * as React from "react";
 import { PageProps } from "gatsby";
 
-// const TestPage: React.FC<PageProps> = () => {
-//   return <main>test</main>;
-// };
-
-// export default TestPage;
-
 import React from "react";
 
-const TestPage: React.FC<PageProps> = (props) => {
-  console.log(props.location);
+const Header: React.FC<PageProps> = (props: any) => {
+  console.log(props);
   return (
-    <div>
-      <h1>test</h1>
-    </div>
+    <>
+      <h1>test{props.title}</h1>
+    </>
   );
 };
 
-export default TestPage;
+export default Header;
