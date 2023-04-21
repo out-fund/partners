@@ -1,15 +1,16 @@
 import React from "react";
 import type { PageProps } from "gatsby";
-
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import { ChakraProvider } from "@chakra-ui/react";
 
 import { Input } from "./../../../components/Form";
 
 const RefereForm: React.FC<PageProps> = ({ params }) => {
   console.log(params.partnerURL);
   return (
-    <>
+    <ChakraProvider>
       {/* <h1>{params.partnerURL}</h1> */}
       <Formik
         initialValues={{
@@ -57,7 +58,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
           </form>
         )}
       </Formik>
-    </>
+    </ChakraProvider>
   );
 };
 

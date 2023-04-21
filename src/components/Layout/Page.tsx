@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-
-// interface InputProps {
-//   label: string;
-
-// }
+import { ChakraProvider } from "@chakra-ui/react";
 
 const Page = (props: any) => {
-  return <Main>{props.children}</Main>;
+  return (
+    <ChakraProvider>
+      <Main>{props.children} </Main>
+    </ChakraProvider>
+  );
 };
 
 export default Page;
 
 const Main = styled.div`
-  background-color: #afa;
+  /* background-color: #afa; */
 `;
