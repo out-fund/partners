@@ -1,0 +1,154 @@
+import { Page, Header, TopBar,Benefits, HowItWorks, Repay, WhatWeDo,WeFund } from "./../../components/layout";
+
+export const variables = {
+  color: {
+    heading: "#0C2542",
+    text: "#1C3654",
+    background: "#fff",
+    icon: "red",
+    btnBG: "blue",
+    btnText: "white"
+  }
+}
+
+{/* 
+Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName
+Please always use lowercase letters without spaces. If you need a break use "-" like "file-name"  */}
+
+<Page
+  options={{
+    color: {
+      heading: variables.color.heading,
+      text: variables.color.text,
+      background: variables.color.background
+    }
+  }}
+>
+
+{/*
+To display partner logo, please upload svg logo like partnerName-logo.svg
+height="" Change if you want it to be bigger than 64px */}
+<TopBar
+  content={{
+    partnerLogo: "blazon.svg",
+  }}
+  options={{
+    height: "64px",
+    color: {
+      background: "green"
+    }
+  }}
+/>
+
+{/* If showCard={true} please upload partner svg logo like partnerName-logo-card.svg */}
+{/* If showCard={false}, you can remove color={} */}
+<Header
+  content={{
+    title: "Is marketing and inventory capital holding your business back from its true potential?",
+    description: "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+    btnText: "Get funded"
+  }}
+  options={{
+    showCard: true,
+    color: {
+      cardBackground: "#1C3654",
+      cardText: "#1C3654"
+    }
+  }}
+/>
+
+<Benefits
+  content={{
+    columns: [
+      {
+        icon: "group_off",
+        title: "No Equity Dilution <br/> Or Personal Guarantee"
+      },
+      { 
+        icon: "task_alt",
+        title: "One Flat <br/> Transparent Fee"
+      },
+      { 
+        icon: "rocket_launch",
+        title: "Get Funded <br/> In 48 Hours"
+      }
+    ]
+  }}
+  options={{
+    color: {
+      icons: variables.color.icon,
+    }
+  }}
+/>
+
+<HowItWorks
+  content={{
+    title: "Is marketing and inventory capital holding your business back from its true potential?",
+    description: "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+    columns: [
+      {
+        title: "Apply for funding",
+        description: "We analyse your data to make you a tailored offer within 48 hours.",
+      },
+      { 
+        title: "One Flat <br/> Transparent Fee",
+        description: "100% of your funds are available to use after selecting an offer.",
+      },
+      { 
+        title: "Get Funded <br/> In 48 Hours",
+        description: "Repay your balance with a small share of your new sales.",
+      }
+    ]
+  }}
+  options={{ 
+    showImages: true
+  }}
+/> 
+
+<Repay
+  content={{
+    title: "Is marketing and inventory capital holding your business back from its true potential?",
+    description: "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+    btnText: "Get funded"
+  }}
+  options={{ 
+    color: {
+      btnBG: variables.color.btnBG,
+      btnText: variables.color.btnText,
+    }
+  }}
+/>
+
+{/* Statement field is optional, if you don't need it leave it empty like statement: "", */}
+<WhatWeDo
+  content={{
+    title: "What We Do",
+    description: "We provide a quick, stress-free funding solution so that your efforts can be focused on driving growth at scale. Utilize your funding effectively to reduce the cost of acquiring your leads and increase your return on ad spend. There is no better time to cut through the noise and bring the attention to your brand that it deserves.",
+    statement: "Don't miss your opportunity to receive up to £2M for advertising inventory in as fast as 24 hours!",
+  }}
+  options={{ 
+    color: {
+      statement: "orange"
+    }
+  }}
+/>
+
+<WeFund
+  content={{
+    title: "We fund online businesses who",
+    list: [
+      "Sell products on Amazon",
+      "Have been trading for 6 months +",
+      "Earn £10K+ monthly revenue",
+    ],
+    btnText: "Get funded"
+  }}
+  options={{ 
+    color: {
+      btnBG: variables.color.btnBG,
+      btnText: variables.color.btnText,
+    }
+  }}
+/>
+
+</Page>

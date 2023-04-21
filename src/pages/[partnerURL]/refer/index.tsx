@@ -1,22 +1,16 @@
 import React from "react";
 import type { PageProps } from "gatsby";
 
-import { Field, Formik, ErrorMessage, useField } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 import { Input } from "./../../../components/Form";
-
-// interface formValueProps {
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-// }
 
 const RefereForm: React.FC<PageProps> = ({ params }) => {
   console.log(params.partnerURL);
   return (
     <>
-      <h1>{params.partnerURL}</h1>
+      {/* <h1>{params.partnerURL}</h1> */}
       <Formik
         initialValues={{
           firstName: "",
@@ -43,12 +37,6 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
-            {/* <div>
-              <label htmlFor="firstName">First Name</label>
-              <Field name="firstName" type="text" />
-              <ErrorMessage name="firstName" />
-            </div> */}
-
             <Input
               label="First Name"
               name="firstName"
@@ -56,23 +44,12 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
               placeholder="Jane"
             />
 
-            {/* <div>
-              <label htmlFor="lastName">Last Name</label>
-              <Field name="lastName" type="text" />
-              <ErrorMessage name="lastName" />
-            </div> */}
             <Input
               label="Last Name"
               name="lastName"
               type="text"
               placeholder="Doe"
             />
-
-            {/* <div>
-              <label htmlFor="email">Email Address</label>
-              <Field name="email" type="email" />
-              <ErrorMessage name="email" />
-            </div> */}
 
             <Input label="Email Address" name="email" type="email" />
 
