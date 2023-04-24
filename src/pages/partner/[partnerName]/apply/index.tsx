@@ -75,6 +75,14 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   .max(20, "Must be 20 numbers or less")
                   .required("Required"),
                 website: yup.string().required("Required"),
+                country: yup
+                  .string()
+                  .max(56, "Must be 20 numbers or less")
+                  .required("Required"),
+                amr: yup
+                  .number()
+                  .max(56, "Must be 20 numbers or less")
+                  .required("Required"),
               })}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -98,6 +106,16 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     type="tel"
                   />
                   <Input label="Business website" name="website" type="text" />
+                  <Input
+                    label="Incorporation Country"
+                    name="country"
+                    type="text"
+                  />
+                  <Input
+                    label="Average Monthly Revenue (in your local currency)"
+                    name="amr"
+                    type="number"
+                  />
                   {/* @ts-expect-error Server Component */}
                   <Button
                     btnbgcolor={pageVars.variables.color.btnBG}

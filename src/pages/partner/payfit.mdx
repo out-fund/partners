@@ -179,21 +179,6 @@ export const variables = {
 
 {/* Statement field is optional, if you don't need it leave it empty like statement: "", */}
 
-<WhatWeDo
-  content={{
-    title: "What We Do",
-    description:
-      "We provide a quick, stress-free funding solution so that your efforts can be focused on driving growth at scale. Utilize your funding effectively to reduce the cost of acquiring your leads and increase your return on ad spend. There is no better time to cut through the noise and bring the attention to your brand that it deserves.",
-    statement:
-      "Don't miss your opportunity to receive up to £2M for advertising inventory in as fast as 24 hours!",
-  }}
-  options={{
-    color: {
-      statement: variables.color.cardElements,
-    },
-  }}
-/>
-
 <WeFund
   content={{
     title: "We fund online businesses who",
@@ -205,10 +190,29 @@ export const variables = {
     btnText: "Get funded",
   }}
   options={{
+    showButton: false,
+    color: {
+      background: variables.color.background,
+      btnBG: variables.color.btnBG,
+      btnText: variables.color.btnText,
+    },
+  }}
+/>
+
+<WhatWeDo
+  content={{
+    title: "Special offer",
+    statement:
+      "For Payfit members we offer a 10% discount  for the first 3 months",
+    btnText: "Get funded",
+  }}
+  options={{
+    showButton: true,
     color: {
       background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
+      statement: variables.color.cardElements,
     },
   }}
 />
