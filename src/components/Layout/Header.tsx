@@ -39,12 +39,14 @@ const Header: React.FC = (props: any) => {
           </div>
 
           <div className="right">
-            {props.options.showCardLogo && <CardLogo className="cardLogo" />}
-            <CardSVG
-              bg={props.options.color.cardBackground}
-              elements={props.options.color.cardElements}
-              text={props.options.color.cardText}
-            />
+            <div className="card">
+              {props.options.showCardLogo && <CardLogo className="cardLogo" />}
+              <CardSVG
+                bg={props.options.color.cardBackground}
+                elements={props.options.color.cardElements}
+                text={props.options.color.cardText}
+              />
+            </div>
           </div>
         </Container>
       </ContentWrapper>
@@ -56,7 +58,7 @@ export default Header;
 
 const StyledHeader = styled.header<any>`
   padding: 64px 0;
-  background-color: ${({ color }) => color.section};
+  background-color: ${({ color }) => color.background};
   h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -88,7 +90,10 @@ const Container = styled.div<any>`
     /* background-color: #fff; */
     display: flex;
     justify-content: center;
-    position: relative;
+
+    .card {
+      position: relative;
+    }
     .cardLogo {
       position: absolute;
       top: 62px;

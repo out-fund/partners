@@ -36,7 +36,7 @@ export default Benefits;
 
 const StyledBenefits = styled.section<any>`
   padding: 32px 0;
-  background-color: ${({ color }) => color.section};
+  background-color: ${({ color }) => color.background};
 
   h3 {
     font-weight: bold;

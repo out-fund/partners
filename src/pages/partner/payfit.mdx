@@ -7,6 +7,7 @@ import {
   Repay,
   WhatWeDo,
   WeFund,
+  Footer,
 } from "./../../components/layout";
 
 export const variables = {
@@ -70,7 +71,7 @@ export const variables = {
     showCard: true,
     showCardLogo: true,
     color: {
-      section: variables.color.background,
+      background: variables.color.background,
       cardBackground: "#faf",
       cardText: "#fff",
       cardElements: "red",
@@ -102,7 +103,7 @@ export const variables = {
   }}
   options={{
     color: {
-      section: variables.color.contrastBackground,
+      background: variables.color.contrastBackground,
       icons: variables.color.icon,
     },
   }}
@@ -135,7 +136,7 @@ export const variables = {
     showImages: true,
     color: {
       numbers: variables.color.btnBG,
-      section: variables.color.background,
+      background: variables.color.background,
 
       cardBackground: "#1C3654",
       cardText: "#fff",
@@ -148,16 +149,17 @@ export const variables = {
 
 <Repay
   content={{
-    title:
-      "Is marketing and inventory capital holding your business back from its true potential?",
+    title: "Repay On Your Terms",
     description:
-      "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+      "Repayments are automatically made from a pre-agreed percentage of your revenue, so you can focus 100% on your business.",
     btnText: "Get funded",
   }}
   options={{
     color: {
+      background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
+      graphLine: "blue",
     },
   }}
 />
@@ -191,8 +193,18 @@ export const variables = {
   }}
   options={{
     color: {
+      background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
+    },
+  }}
+/>
+
+<Footer
+  options={{
+    showFooter: true,
+    color: {
+      background: variables.color.background,
     },
   }}
 />

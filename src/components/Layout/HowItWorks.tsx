@@ -9,7 +9,7 @@ import RepaySVG from "../../images/RepaySVG";
 import { ContentWrapper } from "./../Atoms";
 
 const HowItWorks: React.FC = (props: any) => {
-  console.log(props);
+  // console.log(props);
 
   const whichSVG = (index: number) => {
     if (index === 0) return <SourcesSVG />;
@@ -52,7 +52,7 @@ export default HowItWorks;
 
 const StyledHowItWorks = styled.section<any>`
   padding: 32px 0;
-  background-color: ${({ color }) => color.section};
+  background-color: ${({ color }) => color.background};
 
   .intro {
     text-align: center;
@@ -62,9 +62,6 @@ const StyledHowItWorks = styled.section<any>`
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 8px;
-    }
-    p {
-      margin: 0;
     }
   }
   .grid {
