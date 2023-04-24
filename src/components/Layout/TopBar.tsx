@@ -6,24 +6,36 @@ const svgDir = require.context("!@svgr/webpack!../../images/partnerLogos/");
 
 const TopBar: React.FC = (props: any) => {
   const PartnerLogo = svgDir(`./${props.content?.partnerLogo}`).default;
+  const OutfundLogo = svgDir(`./${props.content?.outfundLogo}`).default;
   // console.log(props);
   return (
-    <StyledTopBar
-      topBarHeight={props.options.topBarHeight}
-      bgc={props.options.color.background}
-    >
+    <StyledTopBar {...props}>
       <ContentWrapper>
-        <Logo h={props.options.logoHeight}>
-          <PartnerLogo />
-        </Logo>
+        <div className="logo">
+          {props.content?.outfundLogo && (
+            <div className="ofl">
+              <OutfundLogo />
+            </div>
+          )}
+
+          {props.content?.outfundLogo && props.content?.partnerLogo && (
+            <div>+</div>
+          )}
+
+          {props.content?.partnerLogo && (
+            <div className="ptl">
+              <PartnerLogo />
+            </div>
+          )}
+        </div>
       </ContentWrapper>
     </StyledTopBar>
   );
 };
 
-const StyledTopBar = styled.nav<{ topBarHeight: string; bgc: string }>`
-  background-color: ${({ bgc }) => bgc};
-  height: ${({ topBarHeight }) => topBarHeight};
+const StyledTopBar = styled.nav<any>`
+  background-color: ${({ options }) => options.color.background};
+  height: ${({ options }) => options.topBarHeight};
   display: flex;
   align-items: center;
   width: 100%;
@@ -32,13 +44,17 @@ const StyledTopBar = styled.nav<{ topBarHeight: string; bgc: string }>`
   left: 0;
   right: 0;
   top: 0;
-`;
 
-const Logo = styled.div<{ h: string }>`
-  display: block;
+  box-shadow: rgba(5, 24, 64, 0.07) 0px 17px 33px,
+    rgba(5, 24, 64, 0.05) 0px 3.8002px 13.45px,
+    rgba(5, 24, 64, 0.04) 0px 1.07885px 7.14579px;
 
-  svg {
-    height: ${({ h }) => h};
+  .logo {
+    display: flex;
+    gap: 24px;
+    svg {
+      height: ${({ options }) => options.logoHeight};
+    }
   }
 `;
 

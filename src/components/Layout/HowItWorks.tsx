@@ -51,8 +51,18 @@ const HowItWorks: React.FC = (props: any) => {
 export default HowItWorks;
 
 const StyledHowItWorks = styled.section<any>`
-  padding: 32px 0;
   background-color: ${({ color }) => color.background};
+
+  padding: 64px 0;
+  @media only screen and (min-width: 970px) {
+    padding: 80px 0;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 120px 0;
+  }
+  @media only screen and (min-width: 1600px) {
+    padding: 200px 0;
+  }
 
   .intro {
     text-align: center;
@@ -69,7 +79,7 @@ const StyledHowItWorks = styled.section<any>`
     grid-template-columns: repeat(1, 1fr);
     gap: 24px;
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 1000px) {
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }

@@ -16,17 +16,10 @@ const Repay: React.FC = (props: any) => {
           <div className="right">
             <h2>{parse(props.content.title)}</h2>
             <p>{parse(props.content.description)}</p>
-            {/* <button
-              style={{
-                color: props.options.color.btnText,
-                backgroundColor: props.options.color.btnBG,
-              }}
-            >
-              {parse(props.content.btnText)}
-            </button> */}
+            {/* @ts-expect-error Server Component */}
             <Button
-              btnBgColor={props.options.color.btnBG}
-              btnTextColor={props.options.color.btnText}
+              btnbgcolor={props.options.color.btnBG}
+              btntextcolor={props.options.color.btnText}
             >
               {parse(props.content.btnText)}
             </Button>
@@ -64,6 +57,6 @@ const Content = styled.div<any>`
     margin-bottom: 8px;
   }
   p {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
   }
 `;

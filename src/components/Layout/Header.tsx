@@ -30,9 +30,10 @@ const Header: React.FC = (props: any) => {
               )}
             </h1>
             <p>{parse(props.content.description)}</p>
+            {/* @ts-expect-error Server Component */}
             <Button
-              btnBgColor={props.options.color.btnBG}
-              btnTextColor={props.options.color.btnText}
+              btnbgcolor={props.options.color.btnBG}
+              btntextcolor={props.options.color.btnText}
             >
               {parse(props.content.btnText)}
             </Button>
@@ -57,8 +58,19 @@ const Header: React.FC = (props: any) => {
 export default Header;
 
 const StyledHeader = styled.header<any>`
-  padding: 64px 0;
   background-color: ${({ color }) => color.background};
+
+  padding: 64px 0;
+  @media only screen and (min-width: 970px) {
+    padding: 80px 0;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 120px 0;
+  }
+  @media only screen and (min-width: 1600px) {
+    padding: 200px 0;
+  }
+
   h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -70,7 +82,7 @@ const StyledHeader = styled.header<any>`
   }
 
   p {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     /* font-size: 1.1rem; */
   }
 `;

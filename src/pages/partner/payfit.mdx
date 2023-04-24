@@ -11,15 +11,24 @@ import {
 } from "./../../components/layout";
 
 export const variables = {
-  topBarHeight: "64px",
-  color: {
-    heading: "#0C2542",
-    text: "#1C3654",
+  partnerLogo: "payfit.svg",
+  outfundLogo: "outfund-dark.svg",
+  topBar: {
+    height: "72px",
     background: "#fff",
-    contrastBackground: "#f2f6fa",
-    icon: "tomato",
-    btnBG: "#000",
+    logoHeight: "32px",
+  },
+  color: {
+    heading: "#0c2542",
+    text: "#1c3654",
+    background: "#fff",
+    contrastBackground: "#EAF4FE",
+    icon: "#49CCE9",
+    btnBG: "#003edb",
     btnText: "#fff",
+    cardBackground: "#00376C",
+    cardText: "#fff",
+    cardElements: "#003EDB",
   },
 };
 
@@ -28,11 +37,11 @@ export const variables = {
 
 <Page
   options={{
-    topBarHeight: variables.topBarHeight,
+    topBarHeight: variables.topBar.height,
     color: {
       heading: variables.color.heading,
       text: variables.color.text,
-      background: variables.color.background
+      background: variables.color.topBarColor
     }
   }}
 >
@@ -42,25 +51,28 @@ export const variables = {
 
 <TopBar
   content={{
-    partnerLogo: "outfund-dark.svg",
+    partnerLogo: variables.partnerLogo,
+    outfundLogo: variables.outfundLogo,
   }}
   options={{
-    topBarHeight: variables.topBarHeight,
-    logoHeight: "32px",
+    topBarHeight: variables.topBar.height,
+    logoHeight: variables.topBar.logoHeight,
     color: {
-      background: variables.color.background,
+      background: variables.topBar.background,
     },
-  }}
+
+}}
 />
 
 {/* If showCard={true} please upload partner svg logo like partnerName-logo-card.svg */}
 {/* If showCard={false}, you can remove color={} */}
 
+{/* secondLine: "For Your Business", */}
+
 <Header
   content={{
     title: {
-      firstLine: "Revenue Based Finance",
-      secondLine: "For Your Business",
+      firstLine: "Revenue Based Finance <br/> For Your Business",
     },
     description:
       "FINTECH Circle and OutFund are excited to work together to help the best fintech startups and scaleups get access to growth capital. While FINTECH Circle's angel network provides early-stage startup capital in the form of equity investments, OutFund provides revenue based financing.",
@@ -72,13 +84,13 @@ export const variables = {
     showCardLogo: true,
     color: {
       background: variables.color.background,
-      cardBackground: "#faf",
-      cardText: "#fff",
-      cardElements: "red",
+      cardBackground:  variables.color.cardBackground,
+      cardText:  variables.color.cardText,
+      cardElements: variables.color.cardElements,
 
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
-      secondLine: "purple",
+      secondLine: "red",
     },
 
 }}
@@ -135,13 +147,14 @@ export const variables = {
   options={{
     showImages: true,
     color: {
-      numbers: variables.color.btnBG,
+      numbers: variables.color.icon,
       background: variables.color.background,
 
-      cardBackground: "#1C3654",
-      cardText: "#fff",
-      cardElements: "#faf",
-      graphLine: "red"
+      cardBackground:  variables.color.cardBackground,
+      cardText:  variables.color.cardText,
+      cardElements: variables.color.cardElements,
+
+      graphLine: variables.color.cardElements,
     },
 
 }}
@@ -159,7 +172,7 @@ export const variables = {
       background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
-      graphLine: "blue",
+      graphLine: variables.color.cardElements,
     },
   }}
 />
@@ -176,7 +189,7 @@ export const variables = {
   }}
   options={{
     color: {
-      statement: "orange",
+      statement: variables.color.cardElements,
     },
   }}
 />

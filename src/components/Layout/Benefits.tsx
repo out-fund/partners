@@ -35,8 +35,9 @@ const Benefits: React.FC = (props: any) => {
 export default Benefits;
 
 const StyledBenefits = styled.section<any>`
-  padding: 32px 0;
   background-color: ${({ color }) => color.background};
+
+  padding: 64px 0;
 
   h3 {
     font-weight: bold;

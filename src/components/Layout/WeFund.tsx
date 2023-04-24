@@ -15,10 +15,10 @@ const WeFund: React.FC = (props: any) => {
               <li key={index}>{parse(item)}</li>
             ))}
           </ul>
-
+          {/* @ts-expect-error Server Component */}
           <Button
-            btnBgColor={props.options.color.btnBG}
-            btnTextColor={props.options.color.btnText}
+            btnbgcolor={props.options.color.btnBG}
+            btntextcolor={props.options.color.btnText}
           >
             {parse(props.content.btnText)}
           </Button>

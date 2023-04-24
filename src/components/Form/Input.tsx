@@ -29,7 +29,7 @@ const Input = (props: InputProps) => {
 export default Input;
 
 const InputWrapper = styled.div`
-  background-color: #afa;
+  /* background-color: #afa; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,18 +42,22 @@ const InputWrapper = styled.div`
   }
   input {
     box-sizing: border-box;
+    border-radius: 4px;
     display: block;
     width: 100%;
     padding: 0;
     margin: 0;
-    border: 0;
-    background-color: #ccc;
-    border-radius: 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+
     height: 40px;
     outline: none;
     padding: 0 16px;
   }
 `;
 const ErrorWrapper = styled.div`
-  background-color: #ffa;
+  /* background-color: #ffa; */
+  color: red;
+  line-height: 1;
+  font-size: 14px;
 `;
