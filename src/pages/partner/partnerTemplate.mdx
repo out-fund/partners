@@ -7,6 +7,7 @@ import {
   Repay,
   WhatWeDo,
   WeFund,
+  Footer,
 } from "./../../components/layout";
 
 export const variables = {
@@ -15,9 +16,10 @@ export const variables = {
     heading: "#0C2542",
     text: "#1C3654",
     background: "#fff",
-    icon: "red",
-    btnBG: "blue",
-    btnText: "white",
+    contrastBackground: "#f2f6fa",
+    icon: "tomato",
+    btnBG: "#000",
+    btnText: "#fff",
   },
 };
 
@@ -40,13 +42,13 @@ export const variables = {
 
 <TopBar
   content={{
-    partnerLogo: "blazon.svg",
+    partnerLogo: "outfund-dark.svg",
   }}
   options={{
     topBarHeight: variables.topBarHeight,
     logoHeight: "32px",
     color: {
-      background: "green",
+      background: variables.color.background,
     },
   }}
 />
@@ -63,14 +65,23 @@ export const variables = {
     description:
       "FINTECH Circle and OutFund are excited to work together to help the best fintech startups and scaleups get access to growth capital. While FINTECH Circle's angel network provides early-stage startup capital in the form of equity investments, OutFund provides revenue based financing.",
     btnText: "Get funded",
+    cardLogo: "outfund-light.svg",
   }}
   options={{
     showCard: true,
+    showCardLogo: true,
     color: {
-      cardBackground: "#1C3654",
-      cardText: "#1C3654",
+      background: variables.color.background,
+      cardBackground: "#faf",
+      cardText: "#fff",
+      cardElements: "red",
+
+      btnBG: variables.color.btnBG,
+      btnText: variables.color.btnText,
+      secondLine: "purple",
     },
-  }}
+
+}}
 />
 
 <Benefits
@@ -92,6 +103,7 @@ export const variables = {
   }}
   options={{
     color: {
+      background: variables.color.contrastBackground,
       icons: variables.color.icon,
     },
   }}
@@ -100,9 +112,9 @@ export const variables = {
 <HowItWorks
   content={{
     title:
-      "Is marketing and inventory capital holding your business back from its true potential?",
+      "How It Works",
     description:
-      "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+      "We build you a unique deal based on your track record and success.",
     columns: [
       {
         title: "Apply for funding",
@@ -110,33 +122,44 @@ export const variables = {
           "We analyse your data to make you a tailored offer within 48 hours.",
       },
       {
-        title: "One Flat <br/> Transparent Fee",
+        title: "Select an offer",
         description:
           "100% of your funds are available to use after selecting an offer.",
       },
       {
-        title: "Get Funded <br/> In 48 Hours",
+        title: "Repay on your terms",
         description: "Repay your balance with a small share of your new sales.",
       },
     ],
   }}
   options={{
     showImages: true,
-  }}
+    color: {
+      numbers: variables.color.btnBG,
+      background: variables.color.background,
+
+      cardBackground: "#1C3654",
+      cardText: "#fff",
+      cardElements: "#faf",
+      graphLine: "red"
+    },
+
+}}
 />
 
 <Repay
   content={{
-    title:
-      "Is marketing and inventory capital holding your business back from its true potential?",
+    title: "Repay On Your Terms",
     description:
-      "With Blazon's Funding Package, securing ad spend can be a problem of the past.",
+      "Repayments are automatically made from a pre-agreed percentage of your revenue, so you can focus 100% on your business.",
     btnText: "Get funded",
   }}
   options={{
     color: {
+      background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
+      graphLine: "blue",
     },
   }}
 />
@@ -170,8 +193,18 @@ export const variables = {
   }}
   options={{
     color: {
+      background: variables.color.contrastBackground,
       btnBG: variables.color.btnBG,
       btnText: variables.color.btnText,
+    },
+  }}
+/>
+
+<Footer
+  options={{
+    showFooter: true,
+    color: {
+      background: variables.color.background,
     },
   }}
 />
