@@ -39,6 +39,8 @@ const InputWrapper = styled.div`
     display: block;
     width: 100%;
     box-sizing: border-box;
+
+    font-weight: 600;
   }
   input {
     box-sizing: border-box;

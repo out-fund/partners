@@ -27,9 +27,6 @@ const ApplyPage: React.FC<PageProps> = (props) => {
     <StyledApplyPage {...pageVars.variables}>
       <ChakraProvider>
         <div className="topbar">
-          {/* <div className="logo">
-            <PartnerLogo />
-          </div> */}
           <div className="logo">
             {pageVars.variables.outfundLogo && (
               <div className="ofl">
@@ -48,14 +45,16 @@ const ApplyPage: React.FC<PageProps> = (props) => {
           </div>
         </div>
         <ContentWrapper>
-          {/* <h1>test = {props.params.partnerName}</h1> */}
-
           <div className="content">
             <Formik
               initialValues={{
                 firstName: "",
                 lastName: "",
                 email: "",
+                phone: "",
+                website: "",
+                country: "",
+                amr: "",
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -79,10 +78,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   .string()
                   .max(56, "Must be 20 numbers or less")
                   .required("Required"),
-                amr: yup
-                  .number()
-                  .max(56, "Must be 20 numbers or less")
-                  .required("Required"),
+                amr: yup.number().required("Required"),
               })}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
