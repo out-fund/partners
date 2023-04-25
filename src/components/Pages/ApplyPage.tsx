@@ -9,11 +9,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Input } from "./../../components/Form";
 import { ContentWrapper, Button } from "./../../components/Atoms";
 
-const partnerDir = require.context("./../../pages/partner/");
+const encode = (data: any) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
 
 const ApplyPage: React.FC<PageProps> = (props) => {
-  //@ts-ignore
-  const pageVars = partnerDir(`./${props.data.mdx.frontmatter.slug}.mdx`);
   const svgDir = require.context("!@svgr/webpack!./../../images/partnerLogos/");
 
   const PartnerLogo = svgDir(
@@ -82,15 +84,26 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   .required("Required"),
                 amr: yup.number().required("Required"),
               })}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 400);
+              onSubmit={(values, actions) => {
+                fetch("/", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                  body: encode({ "form-name": "partnerForm", ...values }),
+                })
+                  .then(() => {
+                    alert("Success");
+                    actions.resetForm();
+                  })
+                  .catch(() => {
+                    alert("Error");
+                  })
+                  .finally(() => actions.setSubmitting(false));
               }}
             >
               {(formik) => (
-                <form onSubmit={formik.handleSubmit}>
+                <form name="partnerForm" data-netlify={true}>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
 
