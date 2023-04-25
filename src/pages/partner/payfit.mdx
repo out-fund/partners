@@ -1,3 +1,25 @@
+---
+published: true
+slug: payfit
+partnerLogo: "payfit.svg"
+outfundLogo: "outfund-dark.svg"
+topBar:
+  height: "72px"
+  background: "#fff"
+  logoHeight: "32px"
+color:
+  heading: "#0c2542"
+  text: "#1c3654"
+  background: "#fff"
+  contrastBackground: "#EAF4FE"
+  icon: "#49CCE9"
+  btnBG: "#003edb"
+  btnText: "#fff"
+  cardBackground: "#00376C"
+  cardText: "#fff"
+  cardElements: "#003EDB"
+---
+
 import {
   Page,
   Header,
@@ -10,38 +32,16 @@ import {
   Footer,
 } from "./../../components/Layout";
 
-export const variables = {
-  partnerLogo: "payfit.svg",
-  outfundLogo: "outfund-dark.svg",
-  topBar: {
-    height: "72px",
-    background: "#fff",
-    logoHeight: "32px",
-  },
-  color: {
-    heading: "#0c2542",
-    text: "#1c3654",
-    background: "#fff",
-    contrastBackground: "#EAF4FE",
-    icon: "#49CCE9",
-    btnBG: "#003edb",
-    btnText: "#fff",
-    cardBackground: "#00376C",
-    cardText: "#fff",
-    cardElements: "#003EDB",
-  },
-};
-
 {/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}
 {/* Please always use lowercase letters without spaces. If you need a break use "-" like "file-name" */}
 
 <Page
   options={{
-    topBarHeight: variables.topBar.height,
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
     color: {
-      heading: variables.color.heading,
-      text: variables.color.text,
-      background: variables.color.topBarColor
+      heading: props.pageContext.frontmatter.color.heading,
+      text: props.pageContext.frontmatter.color.text,
+      background: props.pageContext.frontmatter.color.topBarColor
     }
   }}
 >
@@ -51,14 +51,14 @@ export const variables = {
 
 <TopBar
   content={{
-    partnerLogo: variables.partnerLogo,
-    outfundLogo: variables.outfundLogo,
+    partnerLogo: props.pageContext.frontmatter.partnerLogo,
+    outfundLogo: props.pageContext.frontmatter.outfundLogo,
   }}
   options={{
-    topBarHeight: variables.topBar.height,
-    logoHeight: variables.topBar.logoHeight,
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
+    logoHeight: props.pageContext.frontmatter.topBar.logoHeight,
     color: {
-      background: variables.topBar.background,
+      background: props.pageContext.frontmatter.topBar.background,
     },
 
 }}
@@ -83,13 +83,13 @@ export const variables = {
     showCard: true,
     showCardLogo: true,
     color: {
-      background: variables.color.background,
-      cardBackground:  variables.color.cardBackground,
-      cardText:  variables.color.cardText,
-      cardElements: variables.color.cardElements,
+      background: props.pageContext.frontmatter.color.background,
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
 
-      btnBG: variables.color.btnBG,
-      btnText: variables.color.btnText,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
       secondLine: "red",
     },
 
@@ -115,8 +115,8 @@ export const variables = {
   }}
   options={{
     color: {
-      background: variables.color.contrastBackground,
-      icons: variables.color.icon,
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      icons: props.pageContext.frontmatter.color.icon,
     },
   }}
 />
@@ -147,14 +147,14 @@ export const variables = {
   options={{
     showImages: true,
     color: {
-      numbers: variables.color.icon,
-      background: variables.color.background,
+      numbers: props.pageContext.frontmatter.color.icon,
+      background: props.pageContext.frontmatter.color.background,
 
-      cardBackground:  variables.color.cardBackground,
-      cardText:  variables.color.cardText,
-      cardElements: variables.color.cardElements,
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
 
-      graphLine: variables.color.cardElements,
+      graphLine: props.pageContext.frontmatter.color.cardElements,
     },
 
 }}
@@ -175,9 +175,9 @@ export const variables = {
   options={{
     showButton: false,
     color: {
-      background: variables.color.contrastBackground,
-      btnBG: variables.color.btnBG,
-      btnText: variables.color.btnText,
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
     },
   }}
 />
@@ -192,10 +192,10 @@ export const variables = {
   options={{
     showButton: true,
     color: {
-      background: variables.color.background,
-      btnBG: variables.color.btnBG,
-      btnText: variables.color.btnText,
-      statement: variables.color.cardElements,
+      background: props.pageContext.frontmatter.color.background,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+      statement: props.pageContext.frontmatter.color.cardElements,
     },
   }}
 />

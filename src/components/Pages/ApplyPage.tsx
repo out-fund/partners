@@ -1,43 +1,45 @@
 import React from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 import type { PageProps } from "gatsby";
 import { Formik } from "formik";
 import * as yup from "yup";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import { Input } from "./../../../../components/Form";
-import { ContentWrapper, Button } from "./../../../../components/Atoms";
+import { Input } from "./../../components/Form";
+import { ContentWrapper, Button } from "./../../components/Atoms";
 
-const partnerDir = require.context("./../../../partner/");
+const partnerDir = require.context("./../../pages/partner/");
 
 const ApplyPage: React.FC<PageProps> = (props) => {
-  // const partnerName = params[`partnerName`].split("/")[0];
+  //@ts-ignore
+  const pageVars = partnerDir(`./${props.data.mdx.frontmatter.slug}.mdx`);
+  const svgDir = require.context("!@svgr/webpack!./../../images/partnerLogos/");
 
-  const pageVars = partnerDir(`./${props.params.partnerName}.mdx`);
-  const svgDir = require.context(
-    "!@svgr/webpack!./../../../../images/partnerLogos/"
-  );
-
-  const PartnerLogo = svgDir(`./${pageVars.variables.partnerLogo}`).default;
-  const OutfundLogo = svgDir(`./${pageVars.variables.outfundLogo}`).default;
-  // console.log(pageVars.variables);
+  const PartnerLogo = svgDir(
+    //@ts-ignore
+    `./${props.data.mdx.frontmatter.partnerLogo}`
+  ).default;
+  const OutfundLogo = svgDir(
+    //@ts-ignore
+    `./${props.data.mdx.frontmatter.outfundLogo}`
+  ).default;
 
   // console.log(props);
   return (
-    <StyledApplyPage {...pageVars.variables}>
+    <StyledApplyPage {...props.data.mdx.frontmatter}>
       <ChakraProvider>
         <div className="topbar">
           <div className="logo">
-            {pageVars.variables.outfundLogo && (
+            {props.data.mdx.frontmatter.outfundLogo && (
               <div className="ofl">
                 <OutfundLogo />
               </div>
             )}
+            {props.data.mdx.frontmatter.outfundLogo &&
+              props.data.mdx.frontmatter.partnerLogo && <div>+</div>}
 
-            {pageVars.variables.outfundLogo &&
-              pageVars.variables.partnerLogo && <div>+</div>}
-
-            {pageVars.variables.partnerLogo && (
+            {props.data.mdx.frontmatter.partnerLogo && (
               <div className="ptl">
                 <PartnerLogo />
               </div>
@@ -114,8 +116,8 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   />
                   {/* @ts-expect-error Server Component */}
                   <Button
-                    btnbgcolor={pageVars.variables.color.btnBG}
-                    btntextcolor={pageVars.variables.color.btnText}
+                    btnbgcolor={props.data.mdx.frontmatter.color.btnBG}
+                    btntextcolor={props.data.mdx.frontmatter.color.btnText}
                     type="submit"
                   >
                     Submit
@@ -131,24 +133,6 @@ const ApplyPage: React.FC<PageProps> = (props) => {
 };
 
 export default ApplyPage;
-
-function timeout(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export async function getServerData() {
-  try {
-    return {
-      props: await timeout(1000),
-    };
-  } catch (error) {
-    return {
-      status: 500,
-      headers: {},
-      props: { test: "test" },
-    };
-  }
-}
 
 const StyledApplyPage = styled.div<any>`
   background-color: #fafafa;
@@ -179,6 +163,29 @@ const StyledApplyPage = styled.div<any>`
     .firstLast {
       display: flex;
       gap: 24px;
+    }
+  }
+`;
+
+export const query = graphql`
+  query FormPageQuery($pageId: String) {
+    mdx(id: { eq: $pageId }) {
+      id
+      frontmatter {
+        slug
+        published
+        partnerLogo
+        outfundLogo
+        color {
+          btnBG
+          btnText
+        }
+        topBar {
+          background
+          height
+          logoHeight
+        }
+      }
     }
   }
 `;
