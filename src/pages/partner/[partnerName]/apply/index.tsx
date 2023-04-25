@@ -132,7 +132,23 @@ const ApplyPage: React.FC<PageProps> = (props) => {
 
 export default ApplyPage;
 
-export async function getServerData() {}
+function timeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function getServerData() {
+  try {
+    return {
+      props: await timeout(1000),
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      headers: {},
+      props: { test: "test" },
+    };
+  }
+}
 
 const StyledApplyPage = styled.div<any>`
   background-color: #fafafa;
