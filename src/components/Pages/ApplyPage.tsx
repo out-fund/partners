@@ -1,5 +1,6 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
+
 import styled from "styled-components";
 import type { PageProps } from "gatsby";
 import { Formik } from "formik";
@@ -92,8 +93,11 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   body: encode({ "form-name": "partnerForm", ...values }),
                 })
                   .then(() => {
-                    alert("Success");
-                    actions.resetForm();
+                    // alert("Success");
+                    // actions.resetForm();
+                    navigate("/thank-you/", {
+                      state: { ...props.data.mdx.frontmatter },
+                    });
                   })
                   .catch(() => {
                     alert("Error");
@@ -102,7 +106,15 @@ const ApplyPage: React.FC<PageProps> = (props) => {
               }}
             >
               {(formik) => (
-                <form name="partnerForm" data-netlify={true}>
+                <form
+                  name="partnerForm"
+                  onSubmit={formik.handleSubmit}
+                  netlify-honeypot="bot-field"
+                  data-netlify="true"
+                >
+                  <div className="hidden">
+                    <input type="hidden" name="form-name" value="partnerForm" />
+                  </div>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
 
@@ -126,6 +138,13 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     name="amr"
                     type="number"
                   />
+                  <div className="hidden">
+                    <label>
+                      Dontt fill this out if youtre human:{" "}
+                      <input name="bot-field" />
+                    </label>
+                  </div>
+
                   {/* @ts-expect-error Server Component */}
                   <Button
                     btnbgcolor={props.data.mdx.frontmatter.color.btnBG}
@@ -158,6 +177,15 @@ const StyledApplyPage = styled.div<any>`
     box-shadow: rgba(5, 24, 64, 0.07) 0px 17px 33px,
       rgba(5, 24, 64, 0.05) 0px 3.8002px 13.45px,
       rgba(5, 24, 64, 0.04) 0px 1.07885px 7.14579px;
+  }
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
   .logo {
     display: flex;
