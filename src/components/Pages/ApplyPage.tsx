@@ -141,7 +141,7 @@ const StyledApplyPage = styled.div<any>`
     background-color: ${({ topBar }) => topBar.background};
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     height: ${({ topBar }) => topBar.height};
     box-shadow: rgba(5, 24, 64, 0.07) 0px 17px 33px,
       rgba(5, 24, 64, 0.05) 0px 3.8002px 13.45px,
@@ -150,6 +150,9 @@ const StyledApplyPage = styled.div<any>`
   .logo {
     display: flex;
     gap: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
     svg {
       height: ${({ topBar }) => topBar.logoHeight};
     }
