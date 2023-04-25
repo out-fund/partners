@@ -13,21 +13,21 @@ const partnerDir = require.context("./../../../partner/");
 const ApplyPage: React.FC<PageProps> = (props) => {
   // const partnerName = params[`partnerName`].split("/")[0];
 
-  // const pageVars = partnerDir(`./${props.params.partnerName}.mdx`);
+  const pageVars = partnerDir(`./${props.params.partnerName}.mdx`);
   const svgDir = require.context(
     "!@svgr/webpack!./../../../../images/partnerLogos/"
   );
 
-  // const PartnerLogo = svgDir(`./${pageVars.variables.partnerLogo}`).default;
-  // const OutfundLogo = svgDir(`./${pageVars.variables.outfundLogo}`).default;
+  const PartnerLogo = svgDir(`./${pageVars.variables.partnerLogo}`).default;
+  const OutfundLogo = svgDir(`./${pageVars.variables.outfundLogo}`).default;
   // console.log(pageVars.variables);
 
   // console.log(props);
   return (
-    <StyledApplyPage>
+    <StyledApplyPage {...pageVars.variables}>
       <ChakraProvider>
         <div className="topbar">
-          {/* <div className="logo">
+          <div className="logo">
             {pageVars.variables.outfundLogo && (
               <div className="ofl">
                 <OutfundLogo />
@@ -42,7 +42,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                 <PartnerLogo />
               </div>
             )}
-          </div> */}
+          </div>
         </div>
         <ContentWrapper>
           <div className="content">
@@ -112,14 +112,14 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     name="amr"
                     type="number"
                   />
-
-                  {/* <Button
+                  {/* @ts-expect-error Server Component */}
+                  <Button
                     btnbgcolor={pageVars.variables.color.btnBG}
                     btntextcolor={pageVars.variables.color.btnText}
                     type="submit"
                   >
                     Submit
-                  </Button> */}
+                  </Button>
                 </form>
               )}
             </Formik>
@@ -132,15 +132,17 @@ const ApplyPage: React.FC<PageProps> = (props) => {
 
 export default ApplyPage;
 
+export async function getServerData() {}
+
 const StyledApplyPage = styled.div<any>`
   background-color: #fafafa;
   min-height: 101vh;
   .topbar {
-    /* background-color: ${({ topBar }) => topBar.background}; */
+    background-color: ${({ topBar }) => topBar.background};
     display: flex;
     align-items: center;
     justify-content: center;
-    /* height: ${({ topBar }) => topBar.height}; */
+    height: ${({ topBar }) => topBar.height};
     box-shadow: rgba(5, 24, 64, 0.07) 0px 17px 33px,
       rgba(5, 24, 64, 0.05) 0px 3.8002px 13.45px,
       rgba(5, 24, 64, 0.04) 0px 1.07885px 7.14579px;
@@ -149,7 +151,7 @@ const StyledApplyPage = styled.div<any>`
     display: flex;
     gap: 24px;
     svg {
-      /* height: ${({ topBar }) => topBar.logoHeight}; */
+      height: ${({ topBar }) => topBar.logoHeight};
     }
   }
   .content {
