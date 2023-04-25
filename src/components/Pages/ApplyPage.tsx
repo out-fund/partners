@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, navigate } from "gatsby";
 
 import styled from "styled-components";
-import type { PageProps } from "gatsby";
+import type { HeadFC, PageProps } from "gatsby";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -15,6 +15,17 @@ const encode = (data: any) => {
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
 };
+
+export const Head: HeadFC = (props: any) => (
+  <>
+    <title>
+      {props.data.mdx.frontmatter.slug.charAt(0).toUpperCase() +
+        props.data.mdx.frontmatter.slug.slice(1)}
+      {" | "}
+      Apply
+    </title>
+  </>
+);
 
 const ApplyPage: React.FC<PageProps> = (props) => {
   const svgDir = require.context("!@svgr/webpack!./../../images/partnerLogos/");

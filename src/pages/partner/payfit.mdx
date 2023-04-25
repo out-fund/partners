@@ -32,11 +32,19 @@ import {
   Footer,
 } from "./../../components/Layout";
 
+export const Head = (props) => (
+  <title>
+    {props.pageContext.frontmatter.slug.charAt(0).toUpperCase() +
+      props.pageContext.frontmatter.slug.slice(1)}
+  </title>
+);
+
 {/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}
 {/* Please always use lowercase letters without spaces. If you need a break use "-" like "file-name" */}
 
 <Page
   options={{
+    slug: props.pageContext.frontmatter.slug,
     topBarHeight: props.pageContext.frontmatter.topBar.height,
     color: {
       heading: props.pageContext.frontmatter.color.heading,

@@ -8,6 +8,7 @@ interface ButtonProps {
   children: React.ReactNode;
   to?: string;
   type?: string;
+  href?: string;
 }
 
 const Button = (props: ButtonProps) => {
@@ -17,6 +18,12 @@ const Button = (props: ButtonProps) => {
   if (!url) {
     url = "apply";
   }
+  if (props.href)
+    return (
+      <StyledA href={props.href} {...props}>
+        {props.children}
+      </StyledA>
+    );
   if (!props.type)
     return (
       <StyledLink to={url} {...props}>
@@ -31,6 +38,14 @@ const Button = (props: ButtonProps) => {
 export default Button;
 
 const StyledLink = styled(Link)<any>`
+  background-color: ${({ btnbgcolor }) => btnbgcolor};
+  color: ${({ btntextcolor }) => btntextcolor};
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+`;
+const StyledA = styled.a<any>`
   background-color: ${({ btnbgcolor }) => btnbgcolor};
   color: ${({ btntextcolor }) => btntextcolor};
   padding: 12px 24px;
