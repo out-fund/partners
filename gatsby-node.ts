@@ -26,7 +26,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const createFormPages = formPages.data.allMdx.edges;
 
   createFormPages.forEach(({ node }, index) => {
-    console.log(node);
     if (node.frontmatter.published) {
       createPage({
         path: `/partner/${node.frontmatter.slug}/apply/`,
@@ -35,14 +34,4 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
   });
-
-  // createLandingPages.forEach(({ node }, index) => {
-  //   if (node.published) {
-  //     createPage({
-  //       path: `/${node.slug}/get-funded`,
-  //       component: path.resolve(`./src/components/FormPageLayout.js`),
-  //       context: { pageId: node.id },
-  //     })
-  //   }
-  // })
 };

@@ -27,7 +27,6 @@ const ApplyPage: React.FC<PageProps> = (props) => {
     `./${props.data.mdx.frontmatter.outfundLogo}`
   ).default;
 
-  // console.log(props);
   return (
     <StyledApplyPage {...props.data.mdx.frontmatter}>
       <ChakraProvider>
