@@ -106,7 +106,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                     <input type="hidden" name="form-name" value="referForm" />
                   </div>
                   <div className="hidden">
-                    <input name="url" defaultValue={params.partnerURL} />
+                    <input type="hidden" name="url" value={params.partnerURL} />
                   </div>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
