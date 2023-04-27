@@ -53,7 +53,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                 website: "",
                 country: "",
                 amr: "",
-                url: "",
+                referUrl: params.partnerURL,
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -85,7 +85,10 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                   headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                   },
-                  body: encode({ "form-name": "referForm", ...values }),
+                  body: encode({
+                    "form-name": "referForm",
+                    ...values,
+                  }),
                 })
                   .then(() => {
                     navigate("/refer-successful/");
@@ -136,7 +139,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                     </label>
                   </div>
                   <div className="hidden">
-                    <input name="url" value={params.partnerURL} readOnly />
+                    <input name="referUrl" value={params.partnerURL} readOnly />
                   </div>
                   {/* @ts-expect-error Server Component */}
                   <Button
