@@ -30,14 +30,21 @@ export const Head: HeadFC = (props: any) => (
 const ApplyPage: React.FC<PageProps> = (props) => {
   const svgDir = require.context("!@svgr/webpack!./../../images/partnerLogos/");
 
-  const PartnerLogo = svgDir(
-    //@ts-ignore
-    `./${props.data.mdx.frontmatter.partnerLogo}`
-  ).default;
-  const OutfundLogo = svgDir(
-    //@ts-ignore
-    `./${props.data.mdx.frontmatter.outfundLogo}`
-  ).default;
+  let OutfundLogo;
+  let PartnerLogo;
+
+  if (props.data.mdx.frontmatter.partnerLogo) {
+    PartnerLogo = svgDir(
+      //@ts-ignore
+      `./${props.data.mdx.frontmatter.partnerLogo}`
+    ).default;
+  }
+  if (props.data.mdx.frontmatter.outfundLogo) {
+    OutfundLogo = svgDir(
+      //@ts-ignore
+      `./${props.data.mdx.frontmatter.outfundLogo}`
+    ).default;
+  }
 
   return (
     <StyledApplyPage {...props.data.mdx.frontmatter}>

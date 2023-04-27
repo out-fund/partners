@@ -8,8 +8,6 @@ import CardSVG from "../../images/CardSVG";
 const svgDir = require.context("!@svgr/webpack!../../images/partnerLogos/");
 
 const Header: React.FC = (props: any) => {
-  // console.log(props);
-
   let CardLogo;
   if (props.options.showCardLogo) {
     CardLogo = svgDir(`./${props.content?.cardLogo}`).default;
