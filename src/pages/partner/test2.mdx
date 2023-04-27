@@ -104,30 +104,6 @@ export const Head = (props) => (
 }}
 />
 
-<Benefits
-  content={{
-    columns: [
-      {
-        icon: "fingerprint",
-        title: "No Equity Dilution <br/> Or Personal Guarantee",
-      },
-      {
-        icon: "task_alt",
-        title: "One Flat <br/> Transparent Fee",
-      },
-      {
-        icon: "rocket_launch",
-        title: "Get Funded <br/> In 48 Hours",
-      },
-    ],
-  }}
-  options={{
-    color: {
-      background: props.pageContext.frontmatter.color.contrastBackground,
-      icons: props.pageContext.frontmatter.color.icon,
-    },
-  }}
-/>
 
 <HowItWorks
   content={{
@@ -186,6 +162,31 @@ export const Head = (props) => (
       background: "#faf",
       btnBG: props.pageContext.frontmatter.color.btnBG,
       btnText: props.pageContext.frontmatter.color.btnText,
+    },
+  }}
+/>
+  
+<Benefits
+  content={{
+    columns: [
+      {
+        icon: "fingerprint",
+        title: "No Equity Dilution <br/> Or Personal Guarantee",
+      },
+      {
+        icon: "task_alt",
+        title: "One Flat <br/> Transparent Fee",
+      },
+      {
+        icon: "rocket_launch",
+        title: "Get Funded <br/> In 48 Hours",
+      },
+    ],
+  }}
+  options={{
+    color: {
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      icons: props.pageContext.frontmatter.color.icon,
     },
   }}
 />
