@@ -1,6 +1,7 @@
 import React from "react";
+import { navigate } from "gatsby";
 import styled from "styled-components";
-import type { PageProps } from "gatsby";
+import type { PageProps, HeadFC } from "gatsby";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -15,11 +16,17 @@ const svgDir = require.context(
 
 const OutfundLogo = svgDir(`./outfund-dark.svg`).default;
 
-function encode(data: any) {
+const encode = (data: any) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
-}
+};
+
+export const Head: HeadFC = () => (
+  <>
+    <title>Refer a lead to Outfund</title>
+  </>
+);
 
 const RefereForm: React.FC<PageProps> = ({ params }) => {
   console.log(params.partnerURL);
@@ -73,21 +80,15 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                 amr: yup.number().required("Required"),
               })}
               onSubmit={(values, actions) => {
-                console.log(values);
                 fetch("/", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                   },
-
                   body: encode({ "form-name": "referForm", ...values }),
                 })
                   .then(() => {
-                    alert("Success");
-                    actions.resetForm();
-                    // navigate("/thank-you/", {
-                    //   // state: { navigateToUrl, colors },
-                    // });
+                    navigate("/refer-successful/");
                   })
                   .catch(() => {
                     alert("Error");
@@ -96,7 +97,15 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
               }}
             >
               {(formik) => (
-                <form onSubmit={formik.handleSubmit}>
+                <form
+                  name="referForm"
+                  onSubmit={formik.handleSubmit}
+                  netlify-honeypot="bot-field"
+                  data-netlify="true"
+                >
+                  <div className="hidden">
+                    <input type="hidden" name="form-name" value="referForm" />
+                  </div>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
 
@@ -120,6 +129,12 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                     name="amr"
                     type="number"
                   />
+                  <div className="hidden">
+                    <label>
+                      Dontt fill this out if youtre human:{" "}
+                      <input name="bot-field" />
+                    </label>
+                  </div>
                   {/* @ts-expect-error Server Component */}
                   <Button
                     btnbgcolor="#003EDB"
@@ -141,7 +156,15 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
 export default RefereForm;
 
 const StyledRefereForm = styled.div<any>`
-  /* padding-top: 64px; */
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 
   .topbar {
     background-color: #f2f6fa;
