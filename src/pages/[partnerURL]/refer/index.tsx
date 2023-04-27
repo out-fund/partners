@@ -162,6 +162,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
 export default RefereForm;
 
 const StyledRefereForm = styled.div<any>`
+  padding-bottom: 100px;
   .hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
