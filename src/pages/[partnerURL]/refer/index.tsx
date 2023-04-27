@@ -53,6 +53,7 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                 website: "",
                 country: "",
                 amr: "",
+                url: "",
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -105,9 +106,6 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                   <div className="hidden">
                     <input type="hidden" name="form-name" value="referForm" />
                   </div>
-                  <div className="hidden">
-                    <input type="hidden" name="url" value={params.partnerURL} />
-                  </div>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
 
@@ -136,6 +134,9 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                       Dontt fill this out if youtre human:{" "}
                       <input name="bot-field" />
                     </label>
+                  </div>
+                  <div className="hidden">
+                    <input name="url" value={params.partnerURL} readOnly />
                   </div>
                   {/* @ts-expect-error Server Component */}
                   <Button
