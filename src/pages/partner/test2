@@ -1,0 +1,220 @@
+---
+published: true
+slug: test2
+partnerLogo: ""
+outfundLogo: "outfund-dark.svg"
+topBar:
+  height: "72px"
+  background: "#fff"
+  logoHeight: "32px"
+color:
+  heading: "#0c2542"
+  text: "#1c3654"
+  background: "#fff"
+  contrastBackground: "#EAF4FE"
+  icon: "#49CCE9"
+  btnBG: "#003edb"
+  btnText: "#fff"
+  cardBackground: "#00376C"
+  cardText: "#fff"
+  cardElements: "#003EDB"
+---
+
+import {
+  Page,
+  Header,
+  TopBar,
+  Benefits,
+  HowItWorks,
+  Repay,
+  WhatWeDo,
+  WeFund,
+  Footer,
+} from "./../../components/Layout";
+
+export const Head = (props) => (
+  <title>
+    {props.pageContext.frontmatter.slug.charAt(0).toUpperCase() +
+      props.pageContext.frontmatter.slug.slice(1)}
+  </title>
+);
+
+{/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}
+{/* Please always use lowercase letters without spaces. If you need a break use "-" like "file-name" */}
+
+<Page
+  options={{
+    slug: props.pageContext.frontmatter.slug,
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
+    color: {
+      heading: props.pageContext.frontmatter.color.heading,
+      text: props.pageContext.frontmatter.color.text,
+      background: props.pageContext.frontmatter.color.topBarColor
+    }
+  }}
+>
+
+{/* To display partner logo, please upload svg logo like partnerName-logo.svg */}
+{/* height="" Change if you want it to be bigger than 64px */}
+
+<TopBar
+  content={{
+    partnerLogo: props.pageContext.frontmatter.partnerLogo,
+    outfundLogo: props.pageContext.frontmatter.outfundLogo,
+  }}
+  options={{
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
+    logoHeight: props.pageContext.frontmatter.topBar.logoHeight,
+    color: {
+      background: props.pageContext.frontmatter.topBar.background,
+    },
+
+}}
+/>
+
+{/* If showCard={true} please upload partner svg logo like partnerName-logo-card.svg */}
+{/* If showCard={false}, you can remove color={} */}
+
+{/* secondLine: "For Your Business", */}
+
+<Header
+  content={{
+    title: {
+      firstLine: "Revenue Based Finance <br/> For Your Business",
+    },
+    description:
+      "TEST Circle and OutFund are excited to work together to help the best fintech startups and scaleups get access to growth capital. While FINTECH Circle's angel network provides early-stage startup capital in the form of equity investments, OutFund provides revenue based financing.",
+    btnText: "Get funded",
+    cardLogo: "payfitt.svg",
+  }}
+  options={{
+    showCard: true,
+    showCardLogo: true,
+    color: {
+      background: props.pageContext.frontmatter.color.background,
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
+
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+      secondLine: "red",
+    },
+
+}}
+/>
+
+<Benefits
+  content={{
+    columns: [
+      {
+        icon: "fingerprint",
+        title: "No Equity Dilution <br/> Or Personal Guarantee",
+      },
+      {
+        icon: "task_alt",
+        title: "One Flat <br/> Transparent Fee",
+      },
+      {
+        icon: "rocket_launch",
+        title: "Get Funded <br/> In 48 Hours",
+      },
+    ],
+  }}
+  options={{
+    color: {
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      icons: props.pageContext.frontmatter.color.icon,
+    },
+  }}
+/>
+
+<HowItWorks
+  content={{
+    title:
+      "How It Works",
+    description:
+      "We build you a unique deal based on your track record and success.",
+    columns: [
+      {
+        title: "Apply for funding",
+        description:
+          "We analyse your data to make you a tailored offer within 48 hours.",
+      },
+      {
+        title: "Select an offer",
+        description:
+          "100% of your funds are available to use after selecting an offer.",
+      },
+      {
+        title: "Repay on your terms",
+        description: "Repay your balance with a small share of your new sales.",
+      },
+    ],
+  }}
+  options={{
+    showImages: true,
+    color: {
+      numbers: props.pageContext.frontmatter.color.icon,
+      background: props.pageContext.frontmatter.color.background,
+
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
+
+      graphLine: props.pageContext.frontmatter.color.cardElements,
+    },
+
+}}
+/>
+
+{/* Statement field is optional, if you don't need it leave it empty like statement: "", */}
+
+<WeFund
+  content={{
+    title: "We fund online businesses who",
+    list: [
+      "Sell products on Amazon",
+      "Have been trading for 6 months +",
+      "Earn £10K+ monthly revenue",
+    ],
+    btnText: "Get funded",
+  }}
+  options={{
+    showButton: false,
+    color: {
+      background: "#faf",
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+    },
+  }}
+/>
+
+<WhatWeDo
+  content={{
+    title: "Special offer",
+    statement:
+      "For Payfit members we offer a 10% discount  for the first 3 months",
+    btnText: "Get funded",
+  }}
+  options={{
+    showButton: true,
+    color: {
+      background: props.pageContext.frontmatter.color.background,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+      statement: props.pageContext.frontmatter.color.cardElements,
+    },
+  }}
+/>
+
+<Footer
+  options={{
+    showFooter: true,
+    color: {
+      background: "#fafafa",
+    },
+  }}
+/>
+
+</Page>
