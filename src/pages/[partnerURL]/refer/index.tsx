@@ -29,7 +29,6 @@ export const Head: HeadFC = () => (
 );
 
 const RefereForm: React.FC<PageProps> = ({ params }) => {
-  console.log(params.partnerURL);
   return (
     <StyledRefereForm>
       <ChakraProvider>
@@ -105,6 +104,9 @@ const RefereForm: React.FC<PageProps> = ({ params }) => {
                 >
                   <div className="hidden">
                     <input type="hidden" name="form-name" value="referForm" />
+                  </div>
+                  <div className="hidden">
+                    <input name="url" defaultValue={params.partnerURL} />
                   </div>
                   <div className="firstLast">
                     <Input label="First Name" name="firstName" type="text" />
