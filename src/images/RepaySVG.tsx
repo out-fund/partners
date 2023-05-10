@@ -19,7 +19,7 @@ const RepaySVG = (props: any) => {
         rx="9.5"
       ></rect>
       <path
-        stroke="#003EDB"
+        stroke={props.line}
         strokeWidth="3"
         d="M104 19h20v14h20v14h20v14h20"
       ></path>
