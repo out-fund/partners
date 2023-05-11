@@ -59,9 +59,13 @@ const StyledTopBar = styled.nav<any>`
   .logo {
     display: flex;
     gap: 24px;
+    align-items: center;
     svg {
       height: ${({ options }) => options.logoHeight};
     }
+  }
+  .ofl svg {
+    height: calc(${({ options }) => options.logoHeight} * 0.8);
   }
 `;
 
