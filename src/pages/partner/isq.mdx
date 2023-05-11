@@ -3,6 +3,7 @@ published: true
 slug: ISQ
 partnerLogo: "isq1.svg"
 outfundLogo: "outfund-dark.svg"
+title: "ISQ"
 topBar:
   height: "72px"
   background: "#fff"
@@ -33,10 +34,7 @@ import {
 } from "./../../components/Layout";
 
 export const Head = (props) => (
-  <title>
-    {props.pageContext.frontmatter.slug.charAt(0).toUpperCase() +
-      props.pageContext.frontmatter.slug.slice(1)}
-  </title>
+  <title>{props.pageContext.frontmatter.title}</title>
 );
 
 {/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}

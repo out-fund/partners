@@ -19,8 +19,7 @@ const encode = (data: any) => {
 export const Head: HeadFC = (props: any) => (
   <>
     <title>
-      {props.data.mdx.frontmatter.slug.charAt(0).toUpperCase() +
-        props.data.mdx.frontmatter.slug.slice(1)}
+      {props.data.mdx.frontmatter.title}
       {" | "}
       Apply
     </title>
@@ -233,6 +232,7 @@ export const query = graphql`
     mdx(id: { eq: $pageId }) {
       id
       frontmatter {
+        title
         slug
         published
         partnerLogo
