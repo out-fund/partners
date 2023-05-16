@@ -12,13 +12,13 @@ color:
   heading: "#0c2542"
   text: "#1c3654"
   background: "#fff"
-  contrastBackground: "#EAF4FE"
-  icon: "#49CCE9"
-  btnBG: "#003EDB"
+  contrastBackground: "#9BCBD7"
+  icon: "#015e74"
+  btnBG: "#015e74"
   btnText: "#fff"
-  cardBackground: "#00376C"
+  cardBackground: "#015e74"
   cardText: "#fff"
-  cardElements: "#003EDB"
+  cardElements: "#015e74"
 ---
 
 import {
@@ -78,10 +78,11 @@ export const Head = (props) => (
 <Header
   content={{
     title: {
-      firstLine: "Revenue Based Finance <br/> For Your Business",
+      firstLine: "Revenue Based Finance",
+      secondLine: "For Growing Businesses"
     },
     description:
-      "We're excited to partner with Outfund to offer fast and flexible funding from $10k to $10m.",
+      "As business strategy experts, we know that having the capital to pay for inventory and marketing is a huge barrier to growth for any brand. Digital Paths Capital (powered by Outfund) offers a new way to help you fund your online business with funding from $10K to $10M.",
     btnText: "Get funded",
     cardLogo: "digital-paths-white.svg",
   }}
@@ -96,7 +97,7 @@ export const Head = (props) => (
 
       btnBG: props.pageContext.frontmatter.color.btnBG,
       btnText: props.pageContext.frontmatter.color.btnText,
-      secondLine: "red",
+      secondLine: "#015e74",
     },
 
 }}
@@ -171,11 +172,7 @@ export const Head = (props) => (
 <WeFund
   content={{
     title: "Our Criteria",
-    list: [
-      "6 months of trading histroy",
-      "$20k per month in revenues",
-      "Online banking/supported payment processors",
-    ],
+    list: ["Have been trading for 6 months +", "Earn $20K+ monthly revenue"],
     btnText: "Get funded",
   }}
   options={{
@@ -190,8 +187,10 @@ export const Head = (props) => (
 
 <WhatWeDo
   content={{
-    title: "Special Offer",
-    statement: "",
+    title:
+      "Digtal Paths Finance offers a new way to help you fuel your growing brand.",
+    statement:
+      "Powered by Outfund, Digital Paths Capital can help your business to achieve its growth potential. Don’t be held back by limited inventory, or a small marketing budget. Revenue based financing is a fast, flexible and fair way to supercharge your growth, without giving up equity and with no personal guarantees required.",
     btnText: "Get funded",
   }}
   options={{
