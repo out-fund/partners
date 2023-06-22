@@ -76,6 +76,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                 website: "",
                 country: "",
                 amr: "",
+                sfkey: props.data.mdx.frontmatter.sfkey,
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -107,7 +108,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                   },
-                  body: encode({ "form-name": "partnerForm", "sfkey": props.data.mdx.frontmatter.sfkey,  ...values }),
+                  body: encode({ "form-name": "partnerForm", ...values }),
                 })
                   .then(() => {
                     // console.log(values);
@@ -160,6 +161,9 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                       Dontt fill this out if youtre human:{" "}
                       <input name="bot-field" />
                     </label>
+                  </div>
+                  <div className="hidden">
+                      <input type="text" name="sfkey" value={props.data.mdx.frontmatter.sfkey} readOnly />
                   </div>
 
                   {/* @ts-expect-error Server Component */}
