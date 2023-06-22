@@ -76,6 +76,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                 website: "",
                 country: "",
                 amr: "",
+                sfkey: props.data.mdx.frontmatter.sfkey,
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -110,7 +111,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   body: encode({ "form-name": "partnerForm", ...values }),
                 })
                   .then(() => {
-                    // alert("Success");
+                    // console.log(values);
                     // actions.resetForm();
                     navigate("/thank-you/", {
                       state: { ...props.data.mdx.frontmatter },
@@ -233,6 +234,7 @@ export const query = graphql`
       id
       frontmatter {
         title
+        sfkey
         slug
         published
         partnerLogo
