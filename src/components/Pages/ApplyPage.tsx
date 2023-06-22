@@ -76,7 +76,6 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                 website: "",
                 country: "",
                 amr: "",
-                sfkey: props.data.mdx.frontmatter.sfkey,
               }}
               validationSchema={yup.object({
                 firstName: yup
@@ -108,7 +107,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                   },
-                  body: encode({ "form-name": "partnerForm", ...values }),
+                  body: encode({ "form-name": "partnerForm", "sfkey": props.data.mdx.frontmatter.sfkey,  ...values }),
                 })
                   .then(() => {
                     // console.log(values);
