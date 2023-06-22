@@ -31,10 +31,11 @@ import {
   WhatWeDo,
   WeFund,
   Footer,
-} from "./../../components/Layout";
+  SEO,
+} from "./../../components";
 
 export const Head = (props) => (
-  <title>{props.pageContext.frontmatter.title}</title>
+  <SEO title={props.pageContext.frontmatter.title} />
 );
 
 {/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}

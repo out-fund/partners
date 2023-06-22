@@ -1,13 +1,14 @@
 import React from "react";
 
 interface SEOProps {
-  partnerName: string;
+  title: string;
+  // description: string;
 }
 
-export const SEO = ({ partnerName }: SEOProps) => {
+export const SEO = ({ title }: SEOProps) => {
   const SEO = {
-    title: `Outfund + ${partnerName}`,
-    description: "Apply for funding",
+    title: `${title} + Outfund`,
+    description: "Apply for funding with our partner Outfund today.",
   };
 
   return (
