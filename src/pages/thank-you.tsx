@@ -23,7 +23,7 @@ const ThankYouPage: React.FC<PageProps> = (props) => {
     };
   }
 
-  let slug = props.location.state?.slug ? props.location.state?.slug : "";
+  let slug = props.location.state?.slug ? props.location.state?.slug : "empty";
 
   return (
     <ChakraProvider>

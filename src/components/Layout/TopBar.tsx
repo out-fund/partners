@@ -62,6 +62,9 @@ const StyledTopBar = styled.nav<any>`
     align-items: center;
     svg {
       height: ${({ options }) => options.logoHeight};
+      @media (max-width: 768px) {
+        max-width: 140px;
+      }
     }
   }
   .ofl svg {

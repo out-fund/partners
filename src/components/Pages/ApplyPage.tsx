@@ -56,7 +56,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
               </div>
             )}
             {props.data.mdx.frontmatter.outfundLogo &&
-              props.data.mdx.frontmatter.partnerLogo && <div>+</div>}
+              props.data.mdx.frontmatter.partnerLogo && <i>+</i>}
 
             {props.data.mdx.frontmatter.partnerLogo && (
               <div className="ptl">
@@ -163,7 +163,12 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     </label>
                   </div>
                   <div className="hidden">
-                      <input type="text" name="sfkey" value={props.data.mdx.frontmatter.sfkey} readOnly />
+                    <input
+                      type="text"
+                      name="sfkey"
+                      value={props.data.mdx.frontmatter.sfkey}
+                      readOnly
+                    />
                   </div>
 
                   {/* @ts-expect-error Server Component */}
@@ -195,9 +200,16 @@ const StyledApplyPage = styled.div<any>`
     align-items: center;
     /* justify-content: center; */
     height: ${({ topBar }) => topBar.height};
+    padding-left: 16px;
+    padding-right: 16px;
     box-shadow: rgba(5, 24, 64, 0.07) 0px 17px 33px,
       rgba(5, 24, 64, 0.05) 0px 3.8002px 13.45px,
       rgba(5, 24, 64, 0.04) 0px 1.07885px 7.14579px;
+
+    i {
+      font-style: normal;
+      line-height: 1;
+    }
   }
   .hidden {
     clip: rect(0 0 0 0);
@@ -214,8 +226,12 @@ const StyledApplyPage = styled.div<any>`
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
+    align-items: center;
     svg {
       height: ${({ topBar }) => topBar.logoHeight};
+      @media (max-width: 768px) {
+        max-width: 140px;
+      }
     }
   }
   .content {
@@ -224,9 +240,14 @@ const StyledApplyPage = styled.div<any>`
     margin-left: auto;
     margin-right: auto;
     margin-top: 64px;
+    padding-bottom: 120px;
     .firstLast {
       display: flex;
       gap: 24px;
+    }
+    button {
+      margin-top: 16px;
+      width: 100%;
     }
   }
 `;
