@@ -71,6 +71,7 @@ const ApplyPage: React.FC<PageProps> = (props) => {
               initialValues={{
                 firstName: "",
                 lastName: "",
+                company: "",
                 email: "",
                 phone: "",
                 website: "",
@@ -86,6 +87,10 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                 lastName: yup
                   .string()
                   .max(20, "Must be 20 characters or less")
+                  .required("Required"),
+                company: yup
+                  .string()
+                  .max(64, "Must be 64 characters or less")
                   .required("Required"),
                 email: yup
                   .string()
@@ -139,13 +144,10 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     <Input label="Last Name" name="lastName" type="text" />
                   </div>
 
-                  <Input label="Business email" name="email" type="email" />
-                  <Input
-                    label="Business phone number"
-                    name="phone"
-                    type="tel"
-                  />
-                  <Input label="Business website" name="website" type="text" />
+                  <Input label="Company name" name="company" type="text" />
+                  <Input label="Company email" name="email" type="email" />
+                  <Input label="Company phone number" name="phone" type="tel" />
+                  <Input label="Company website" name="website" type="text" />
                   <Input
                     label="Incorporation Country"
                     name="country"
