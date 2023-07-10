@@ -102,8 +102,11 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   .required("Required"),
                 website: yup.string().required("Required"),
                 country: yup
-                  .string()
-                  .max(56, "Must be 20 numbers or less")
+                  .mixed()
+                  .oneOf(
+                    ["AUS", "DEU", "IRL", "NLD", "ESP", "GBR", "USA"],
+                    "We can provide funding only to businesses in listed countries."
+                  )
                   .required("Required"),
                 amr: yup.number().required("Required"),
               })}
@@ -148,11 +151,25 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   <Input label="Company email" name="email" type="email" />
                   <Input label="Company phone number" name="phone" type="tel" />
                   <Input label="Company website" name="website" type="text" />
+
                   <Input
-                    label="Incorporation Country"
+                    label="Company incorporation Country"
                     name="country"
-                    type="text"
-                  />
+                    type="select"
+                  >
+                    <option value="" disabled>
+                      Select
+                    </option>
+                    <option value="AUS">Australia</option>
+                    <option value="DEU">Germany</option>
+                    <option value="IRL">Ireland</option>
+                    <option value="NLD">Netherlands</option>
+                    <option value="ESP">Spain</option>
+                    <option value="GBR">United Kingdom</option>
+                    <option value="USA">United States</option>
+                    <option value="Other">Other</option>
+                  </Input>
+
                   <Input
                     label="Average Monthly Revenue (in your local currency)"
                     name="amr"
