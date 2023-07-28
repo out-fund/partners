@@ -110,10 +110,62 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                   .required("Required"),
                 amr: yup
                   .number()
-                  .moreThan(
-                    30000,
-                    "We can provide funding only to businesses with monthly revenue of at least USD 32,000"
-                  )
+                  .when("country", {
+                    is: "AUS",
+                    then: (schema) =>
+                      schema.moreThan(
+                        48000,
+                        "We can only provide funding to businesses with monthly revenue of at least AUD 48,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "DEU",
+                    then: (schema) =>
+                      schema.moreThan(
+                        30000,
+                        "We can only provide funding to businesses with monthly revenue of at least EUR 30,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "IRL",
+                    then: (schema) =>
+                      schema.moreThan(
+                        30000,
+                        "We can only provide funding to businesses with monthly revenue of at least EUR 30,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "NLD",
+                    then: (schema) =>
+                      schema.moreThan(
+                        30000,
+                        "We can only provide funding to businesses with monthly revenue of at least EUR 30,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "ESP",
+                    then: (schema) =>
+                      schema.moreThan(
+                        30000,
+                        "We can only provide funding to businesses with monthly revenue of at least EUR 30,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "GBR",
+                    then: (schema) =>
+                      schema.moreThan(
+                        25000,
+                        "We can only provide funding to businesses with monthly revenue of at least GBP 25,000"
+                      ),
+                  })
+                  .when("country", {
+                    is: "USA",
+                    then: (schema) =>
+                      schema.moreThan(
+                        25000,
+                        "We can only provide funding to businesses with monthly revenue of at least USD 32,000"
+                      ),
+                  })
                   .required("Required"),
               })}
               onSubmit={(values, actions) => {
