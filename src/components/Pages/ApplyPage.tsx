@@ -108,7 +108,13 @@ const ApplyPage: React.FC<PageProps> = (props) => {
                     "We can provide funding only to businesses in listed countries."
                   )
                   .required("Required"),
-                amr: yup.number().required("Required"),
+                amr: yup
+                  .number()
+                  .moreThan(
+                    30000,
+                    "We can provide funding only to businesses with monthly revenue of at least USD 32,000"
+                  )
+                  .required("Required"),
               })}
               onSubmit={(values, actions) => {
                 fetch("/", {
