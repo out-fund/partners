@@ -1,0 +1,219 @@
+---
+published: true
+slug: "rangewell"
+partnerLogo: ""
+outfundLogo: "outfund-dark.svg"
+title: "Rangewell"
+sfkey: "Rangewell Limited"
+topBar:
+  height: "72px"
+  background: "#fff"
+  logoHeight: "32px"
+color:
+  heading: "#0c2542"
+  text: "#1c3654"
+  background: "#fff"
+  contrastBackground: "#EAF4FE"
+  icon: "#49CCE9"
+  btnBG: "#003EDB"
+  btnText: "#fff"
+  cardBackground: "#00376C"
+  cardText: "#fff"
+  cardElements: "#003EDB"
+---
+
+import {
+  Page,
+  Header,
+  TopBar,
+  Benefits,
+  HowItWorks,
+  Repay,
+  WhatWeDo,
+  WeFund,
+  Footer,
+  SEO,
+} from "./../../components";
+
+export const Head = (props) => (
+  <SEO title={props.pageContext.frontmatter.title} />
+);
+
+{/* Partner name = partner URL = name of the file => https://partners.out.fund/parner/fileName */}
+{/* Please always use lowercase letters without spaces. If you need a break use "-" like "file-name" */}
+
+<Page
+  options={{
+    slug: props.pageContext.frontmatter.slug,
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
+    color: {
+      heading: props.pageContext.frontmatter.color.heading,
+      text: props.pageContext.frontmatter.color.text,
+      background: props.pageContext.frontmatter.color.topBarColor
+    }
+  }}
+>
+
+{/* To display partner logo, please upload svg logo like partnerName-logo.svg */}
+{/* height="" Change if you want it to be bigger than 64px */}
+
+<TopBar
+  content={{
+    partnerLogo: props.pageContext.frontmatter.partnerLogo,
+    outfundLogo: props.pageContext.frontmatter.outfundLogo,
+  }}
+  options={{
+    topBarHeight: props.pageContext.frontmatter.topBar.height,
+    logoHeight: props.pageContext.frontmatter.topBar.logoHeight,
+    color: {
+      background: props.pageContext.frontmatter.topBar.background,
+    },
+
+}}
+/>
+
+{/* If showCard={true} please upload partner svg logo like partnerName-logo-card.svg */}
+{/* If showCard={false}, you can remove color={} */}
+
+{/* secondLine: "For Your Business", */}
+
+<Header
+  content={{
+    title: {
+      firstLine: "Revenue Based Finance <br/> For Your Business",
+    },
+    description:
+      "We're excited to partner with Outfund to offer fast and flexible funding from £10k to £10m.",
+    btnText: "Get funded",
+    cardLogo: "outfund-light.svg",
+  }}
+  options={{
+    showCard: true,
+    showCardLogo: true,
+    color: {
+      background: props.pageContext.frontmatter.color.background,
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
+
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+      secondLine: "red",
+    },
+
+}}
+/>
+
+<Benefits
+  content={{
+    columns: [
+      {
+        icon: "group_off",
+        title: "No Equity Dilution <br/> Or Personal Guarantee",
+      },
+      {
+        icon: "task_alt",
+        title: "One Flat <br/> Transparent Fee",
+      },
+      {
+        icon: "rocket_launch",
+        title: "Get Funded <br/> In 48 Hours",
+      },
+    ],
+  }}
+  options={{
+    color: {
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      icons: props.pageContext.frontmatter.color.icon,
+    },
+  }}
+/>
+
+<HowItWorks
+  content={{
+    title:
+      "How It Works",
+    description:
+      "We build you a unique deal based on your track record and success.",
+    columns: [
+      {
+        title: "Apply for funding",
+        description:
+          "We analyse your data to make you a tailored offer within 48 hours.",
+      },
+      {
+        title: "Select an offer",
+        description:
+          "Funds loaded into your Outfund wallet.",
+      },
+      {
+        title: "Repay on your terms",
+        description: "Repay your balance with either revenue-share or fixed repayments.",
+      },
+    ],
+  }}
+  options={{
+    showImages: true,
+    color: {
+      numbers: props.pageContext.frontmatter.color.icon,
+      background: props.pageContext.frontmatter.color.background,
+
+      cardBackground: props.pageContext.frontmatter.color.cardBackground,
+      cardText: props.pageContext.frontmatter.color.cardText,
+      cardElements: props.pageContext.frontmatter.color.cardElements,
+
+      graphLine: props.pageContext.frontmatter.color.cardElements,
+    },
+
+}}
+/>
+
+{/* Statement field is optional, if you don't need it leave it empty like statement: "", */}
+
+<WeFund
+  content={{
+    title: "Our Criteria",
+    list: [
+      "12 months of trading history",
+      "£/$/€10k per month in revenues",
+      "Online banking/supported payment processors",
+    ],
+    btnText: "Get funded",
+  }}
+  options={{
+    showButton: false,
+    color: {
+      background: props.pageContext.frontmatter.color.contrastBackground,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+    },
+  }}
+/>
+
+<WhatWeDo
+  content={{
+    title: "Get Funded",
+    statement: "Receive an offer in 48 hours",
+    btnText: "Get funded",
+  }}
+  options={{
+    showButton: true,
+    color: {
+      background: props.pageContext.frontmatter.color.background,
+      btnBG: props.pageContext.frontmatter.color.btnBG,
+      btnText: props.pageContext.frontmatter.color.btnText,
+      statement: props.pageContext.frontmatter.color.cardElements,
+    },
+  }}
+/>
+
+<Footer
+  options={{
+    showFooter: true,
+    color: {
+      background: "#fafafa",
+    },
+  }}
+/>
+
+</Page>
